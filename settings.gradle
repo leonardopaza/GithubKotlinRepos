@@ -14,3 +14,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Github Kotlin Repos"
 include ':app'
+include ':data'
+include ':data_local'
+include ':data_remote'
+include ':di'
+include ':domain'
+include ':features:github_kotlin_repos'
+include ':base:feature'
