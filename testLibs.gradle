@@ -1,0 +1,5 @@
+ext {
+    junit = "junit:junit:$junitVersion"
+    androidJunit = "androidx.test.ext:junit:$androidJunitVersion"
+    espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
+}

@@ -1,0 +1,12 @@
+ext {
+    appDependencies = [
+            [configuration: "implementation", dependency: "$appCompat"],
+            [configuration: "implementation", dependency: "$androidKtxCore"],
+            [configuration: "implementation", dependency: "$material"],
+            [configuration: "implementation", dependency: "$constraintLayout"],
+            [configuration: "implementation", dependency: "$paging"],
+            [configuration: "implementation", dependency: "$retrofit2"],
+            [configuration: "implementation", dependency: "$gsonConvertFacotory"],
+            [configuration: "implementation", dependency: "$koinAndroid"]
+    ]
+}

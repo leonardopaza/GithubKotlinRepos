@@ -1,0 +1,5 @@
+ext {
+    junitVersion = "4.13.2"
+    androidJunitVersion = "1.1.5"
+    espressoVersion = "3.5.1"
+}

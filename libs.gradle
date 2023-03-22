@@ -1,0 +1,13 @@
+ext {
+    appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
+    androidKtxCore = "androidx.core:core-ktx:$androidKtxCoreVersion"
+    material = "com.google.android.material:material:$materialVersion"
+    constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    paging = "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    retrofit2 = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    gsonConvertFacotory = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+}
