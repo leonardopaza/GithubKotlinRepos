@@ -4,6 +4,9 @@ ext {
     material = "com.google.android.material:material:$materialVersion"
     constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
+    navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+
     paging = "androidx.paging:paging-runtime-ktx:$paging_version"
 
     retrofit2 = "com.squareup.retrofit2:retrofit:$retrofitVersion"

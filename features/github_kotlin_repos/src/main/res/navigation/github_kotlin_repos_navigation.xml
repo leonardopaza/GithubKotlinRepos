@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/github_kotlin_repos_navigation"
+    app:startDestination="@id/kotlinGithubRepositoriesFragment">
+
+    <fragment
+        android:id="@+id/kotlinGithubRepositoriesFragment"
+        android:name="com.lp.github_kotlin_repos.kotlin_github_repositories.KotlinGithubRepositoriesFragment"
+        android:label="KotlinGithubRepositoriesFragment"/>
+
+</navigation>
