@@ -3,6 +3,7 @@ ext {
     androidKtxCore = "androidx.core:core-ktx:$androidKtxCoreVersion"
     material = "com.google.android.material:material:$materialVersion"
     constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
 
     navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -10,7 +11,9 @@ ext {
     paging = "androidx.paging:paging-runtime-ktx:$paging_version"
 
     retrofit2 = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    gsonConvertFacotory = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    gsonConvertFactory = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    httpInterceptor = "com.squareup.okhttp3:logging-interceptor:$httpInterceptorVersion"
+    gson = "com.google.code.gson:gson:$gsonVersion"
 
     koinAndroid = "io.insert-koin:koin-android:$koinVersion"
 }

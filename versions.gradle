@@ -3,12 +3,15 @@ ext {
     androidKtxCoreVersion = "1.9.0"
     materialVersion = "1.8.0"
     constraintLayoutVersion = "2.1.4"
+    coroutineVersion = "1.6.4"
 
     navigationVersion = "2.5.3"
 
     paging_version = '3.0.0'
 
     retrofitVersion = "2.9.0"
+    httpInterceptorVersion = "4.10.0"
+    gsonVersion = "2.10.1"
 
     koinVersion = "3.3.0"
 }
