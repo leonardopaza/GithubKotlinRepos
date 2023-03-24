@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 class KotlinReposRepositoryImpl(
     private val dataSource: KotlinReposRemoteDataSource
 ) : KotlinReposRepository {
-    override fun getGithubKotlinRepositories(): Flow<GithubKotlinReposModel> =
+    override fun getGithubKotlinRepositories(): Flow<List<GithubKotlinReposModel>> =
         dataSource.getGithubKotlinRepositories()
 }

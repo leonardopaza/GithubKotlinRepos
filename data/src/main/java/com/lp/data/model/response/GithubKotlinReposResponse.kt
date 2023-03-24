@@ -8,6 +8,19 @@ data class GithubKotlinReposResponse(
 )
 
 data class GithubKotlinReposDataResponse(
-    @SerializedName("full_name")
-    val repositoryName: String? = null
+    @SerializedName("name")
+    val repositoryName: String? = null,
+    @SerializedName("owner")
+    val owner: GithubKotlinReposDataOwnerResponse? = null,
+    @SerializedName("forks_count")
+    val forksQuantity: Long? = null,
+    @SerializedName("stargazers_count")
+    val starsQuantity: Long? = null
+)
+
+data class GithubKotlinReposDataOwnerResponse(
+    @SerializedName("login")
+    val authorName: String? = null,
+    @SerializedName("avatar_url")
+    val authorPictureUrl: String? = null
 )

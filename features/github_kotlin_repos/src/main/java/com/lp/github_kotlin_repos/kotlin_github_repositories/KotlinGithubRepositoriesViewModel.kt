@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 class KotlinGithubRepositoriesViewModel(
         private val getKotlinRepositoriesUseCase: GetKotlinRepositoriesUseCase
     ) : ViewModel() {
-        private val _kotlinRepos = MutableLiveData<GithubKotlinReposModel>()
-        val kotlinRepos: LiveData<GithubKotlinReposModel> = _kotlinRepos
+        private val _kotlinRepos = MutableLiveData<List<GithubKotlinReposModel>>()
+        val kotlinRepos: LiveData<List<GithubKotlinReposModel>> = _kotlinRepos
 
         fun getKotlinRepositories() {
             viewModelScope.launch {

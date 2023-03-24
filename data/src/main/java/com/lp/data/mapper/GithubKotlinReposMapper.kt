@@ -1,21 +1,19 @@
 package com.lp.data.mapper
 
-import com.lp.data.model.response.GithubKotlinReposDataResponse
 import com.lp.data.model.response.GithubKotlinReposResponse
-import com.lp.domain.model.GithubKotlinReposDataModel
 import com.lp.domain.model.GithubKotlinReposModel
 
 object GithubKotlinReposMapper {
-    fun toDomain(response: GithubKotlinReposResponse) = GithubKotlinReposModel(
-        kotlinRepositories = listToDomainData(response.items)
-    )
-
-    private fun listToDomainData(list: List<GithubKotlinReposDataResponse>?): List<GithubKotlinReposDataModel> {
-        val listResponse = mutableListOf<GithubKotlinReposDataModel>()
-        list?.forEach {
+    fun toDomain(response: GithubKotlinReposResponse) : List<GithubKotlinReposModel> {
+        val listResponse = mutableListOf<GithubKotlinReposModel>()
+        response.items.forEach {
             listResponse.add(
-                GithubKotlinReposDataModel(
-                    repositoryName = it.repositoryName
+                GithubKotlinReposModel(
+                    authorName = it.owner?.authorName,
+                    authorPictureUrl = it.owner?.authorPictureUrl,
+                    repositoryName = it.repositoryName,
+                    starsQuantity = it.starsQuantity,
+                    forksQuantity = it.forksQuantity
                 )
             )
         }

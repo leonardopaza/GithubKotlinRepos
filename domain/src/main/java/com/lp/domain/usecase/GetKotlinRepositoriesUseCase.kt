@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 
 class GetKotlinRepositoriesUseCase(private val repository: KotlinReposRepository) {
-    suspend fun execute(): GithubKotlinReposModel {
+    suspend fun execute(): List<GithubKotlinReposModel> {
         return repository.getGithubKotlinRepositories().first()
     }
 }

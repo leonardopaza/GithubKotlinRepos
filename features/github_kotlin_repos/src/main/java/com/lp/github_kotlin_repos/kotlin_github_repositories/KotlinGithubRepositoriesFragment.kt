@@ -22,7 +22,7 @@ class KotlinGithubRepositoriesFragment : BaseFragmentBinding<FragmentKotlinGithu
 
     override fun addObservers(owner: LifecycleOwner) {
         viewModel.kotlinRepos.observe(owner) {
-            Toast.makeText(requireContext(), it.kotlinRepositories.first().repositoryName, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it.first().starsQuantity.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }
