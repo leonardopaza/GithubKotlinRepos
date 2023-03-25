@@ -12,7 +12,7 @@ class GetKotlinRepositoriesUseCase(private val repository: KotlinReposRepository
                 params.language,
                 params.sort,
                 params.page
-            ).first()
+            )
         }
     }
 
