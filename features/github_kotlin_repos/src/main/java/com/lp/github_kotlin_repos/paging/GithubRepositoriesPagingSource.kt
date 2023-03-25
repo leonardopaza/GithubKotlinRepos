@@ -33,7 +33,7 @@ class GithubRepositoriesPagingSource(
                         response = LoadResult.Page(
                             data = it,
                             prevKey = if (position == initialPageIndex) null else position - 1,
-                            nextKey = if (it.isEmpty() || it.size < NETWORK_PAGE_SIZE) null else position + 1
+                            nextKey = if (it.isEmpty() || it.size < NETWORK_MIN_SIZE_TO_NEXT) null else position + 1
                         )
                     }
                 } catch (e: Exception) {
@@ -47,7 +47,8 @@ class GithubRepositoriesPagingSource(
     }
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 30
+        const val NETWORK_PAGE_SIZE = 1
+        const val NETWORK_MIN_SIZE_TO_NEXT = 25
     }
 
     override fun getRefreshKey(state: PagingState<Int, GithubKotlinReposModel>): Int? = null

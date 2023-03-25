@@ -25,7 +25,6 @@ class KotlinGithubRepositoriesFragment : BaseFragmentBinding<FragmentKotlinGithu
 
     override fun configureView() {
         setupAdapter()
-        viewModel.getKotlinRepositories()
     }
 
     override fun addObservers(owner: LifecycleOwner) {

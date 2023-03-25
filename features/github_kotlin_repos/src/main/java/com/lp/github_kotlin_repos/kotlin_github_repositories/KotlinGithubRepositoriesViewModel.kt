@@ -21,20 +21,24 @@ class KotlinGithubRepositoriesViewModel(
         private val _kotlinRepos = MutableLiveData<Flow<PagingData<GithubKotlinReposModel>>>()
         val kotlinRepos: LiveData<Flow<PagingData<GithubKotlinReposModel>>> = _kotlinRepos
 
-        fun getKotlinRepositories() {
-            val newResult = Pager(
-                PagingConfig(
-                    pageSize = GithubRepositoriesPagingSource.NETWORK_PAGE_SIZE
-                ),
-                pagingSourceFactory = {
-                    GithubRepositoriesPagingSource(
-                        language = "language:kotlin",
-                        sort = "stars",
-                        getKotlinRepositoriesUseCase
-                    )
-                }
-            ).flow.cachedIn(viewModelScope)
+    init {
+        getKotlinRepositories()
+    }
 
-            _kotlinRepos.value = newResult
-        }
+    fun getKotlinRepositories() {
+        val newResult = Pager(
+            PagingConfig(
+                pageSize = GithubRepositoriesPagingSource.NETWORK_PAGE_SIZE
+            ),
+            pagingSourceFactory = {
+                GithubRepositoriesPagingSource(
+                    language = "language:kotlin",
+                    sort = "stars",
+                    getKotlinRepositoriesUseCase
+                )
+            }
+        ).flow.cachedIn(viewModelScope)
+
+        _kotlinRepos.value = newResult
+    }
 }
