@@ -2,13 +2,23 @@ package com.lp.domain.usecase
 
 import com.lp.domain.model.GithubKotlinReposModel
 import com.lp.domain.repository.KotlinReposRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 
 class GetKotlinRepositoriesUseCase(private val repository: KotlinReposRepository) {
-    suspend fun execute(): List<GithubKotlinReposModel> {
-        return repository.getGithubKotlinRepositories().first()
+    suspend fun execute(params: Params?) = when (params) {
+        null -> throw RuntimeException("Params must not be null")
+        else -> {
+            repository.getGithubKotlinRepositories(
+                params.language,
+                params.sort,
+                params.page
+            ).first()
+        }
     }
+
+    data class Params(
+        val language: String,
+        val sort: String,
+        val page: Int
+    )
 }

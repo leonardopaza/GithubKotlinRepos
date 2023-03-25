@@ -16,7 +16,13 @@ class KotlinGithubRepositoriesViewModel(
 
         fun getKotlinRepositories() {
             viewModelScope.launch {
-                _kotlinRepos.value = getKotlinRepositoriesUseCase.execute()
+                _kotlinRepos.value = getKotlinRepositoriesUseCase.execute(
+                    GetKotlinRepositoriesUseCase.Params(
+                        language = "language:kotlin",
+                        sort = "stars",
+                        page = 1
+                    )
+                )
             }
         }
 }

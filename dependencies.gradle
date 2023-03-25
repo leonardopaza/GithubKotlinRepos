@@ -41,5 +41,7 @@ ext {
             [configuration: "implementation", dependency: "$koinAndroid"]
     ]
 
-    featureGithubKotlinReposDependencies = featureCommonDependencies
+    featureGithubKotlinReposDependencies = featureCommonDependencies + [
+            [configuration: "implementation", dependency: "$paging"]
+    ]
 }

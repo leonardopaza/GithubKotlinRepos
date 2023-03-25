@@ -4,5 +4,9 @@ import com.lp.domain.model.GithubKotlinReposModel
 import kotlinx.coroutines.flow.Flow
 
 interface KotlinReposRepository {
-    fun getGithubKotlinRepositories(): Flow<List<GithubKotlinReposModel>>
+    fun getGithubKotlinRepositories(
+        language: String,
+        sort: String,
+        page: Int
+    ): Flow<List<GithubKotlinReposModel>>
 }

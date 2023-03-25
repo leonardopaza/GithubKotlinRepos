@@ -10,13 +10,17 @@ import kotlinx.coroutines.flow.flow
 class KotlinReposRemoteDataSourceImpl(
     private val webService: SearchRepoWebService
 ) : KotlinReposRemoteDataSource {
-    override fun getGithubKotlinRepositories(): Flow<List<GithubKotlinReposModel>> = flow {
+    override fun getGithubKotlinRepositories(
+        language: String,
+        sort: String,
+        page: Int
+    ): Flow<List<GithubKotlinReposModel>> = flow {
         emit(
             GithubKotlinReposMapper.toDomain(
                 webService.getKotlinRepos(
-                    language = "language:kotlin",
-                    sort = "stars",
-                    page = 1
+                    language = language,
+                    sort = sort,
+                    page = page
                 )
             )
         )
