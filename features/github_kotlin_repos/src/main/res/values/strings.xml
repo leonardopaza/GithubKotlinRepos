@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="author_picture_description">Foto do autor</string>
+    <string name="author_name_label">Autor:</string>
+    <string name="repository_name_label">Repositório:</string>
+    <string name="forks_quantity_label">Forks</string>
+    <string name="stars_quantity_label">Estrelas</string>
+
+    <string name="error_message">Não foi possível carregar as informações, tente novamente mais tarde!</string>
+    <string name="error_end_message">Não há mais informações para carregar!</string>
+</resources>

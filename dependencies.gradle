@@ -1,0 +1,51 @@
+ext {
+    commonDependencies = [
+            [configuration: "implementation", dependency: "$appCompat"],
+            [configuration: "implementation", dependency: "$androidKtxCore"],
+            [configuration: "implementation", dependency: "$material"],
+            [configuration: "implementation", dependency: "$constraintLayout"],
+            [configuration: "implementation", dependency: "$coroutine"]
+    ]
+
+    appDependencies = commonDependencies + [
+            [configuration: "implementation", dependency: "$navigationUi"],
+            [configuration: "implementation", dependency: "$navigationFragment"],
+            [configuration: "implementation", dependency: "$koinAndroid"]
+    ]
+
+    diDependencies = [
+            [configuration: "implementation", dependency: "$koinAndroid"],
+            [configuration: "implementation", dependency: "$retrofit2"]
+    ]
+
+    dataDependencies = [
+            [configuration: "implementation", dependency: "$gson"],
+            [configuration: "implementation", dependency: "$coroutine"]
+    ]
+
+    dataRemoteDependencies = [
+            [configuration: "implementation", dependency: "$retrofit2"],
+            [configuration: "implementation", dependency: "$gsonConvertFactory"],
+            [configuration: "implementation", dependency: "$httpInterceptor"],
+            [configuration: "implementation", dependency: "$gson"],
+            [configuration: "implementation", dependency: "$coroutine"]
+    ]
+
+    domainDependencies = [
+            [configuration: "implementation", dependency: "$coroutine"]
+    ]
+
+    featureCommonDependencies = commonDependencies + [
+            [configuration: "implementation", dependency: "$navigationUi"],
+            [configuration: "implementation", dependency: "$navigationFragment"],
+            [configuration: "implementation", dependency: "$koinAndroid"]
+    ]
+
+    baseFeatureDependencies = commonDependencies + featureCommonDependencies
+
+    featureGithubKotlinReposDependencies = featureCommonDependencies + [
+            [configuration: "implementation", dependency: "$paging"],
+            [configuration: "implementation", dependency: "$glide"],
+            [configuration: "annotationProcessor", dependency: "$glideProcessor"]
+    ]
+}

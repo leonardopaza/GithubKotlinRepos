@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$rootProject.projectDir/android-common.gradle"
+
+android {
+    namespace 'com.lp.data_remote'
+}
+
+dependencies {
+    implementation project(':data')
+
+    dataRemoteDependencies.each { add(it.configuration, it.dependency, it.options) }
+    dataRemoteTestDependencies.each { add(it.configuration, it.dependency, it.options) }
+}

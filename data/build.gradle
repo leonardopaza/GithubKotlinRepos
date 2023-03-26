@@ -1,0 +1,10 @@
+plugins {
+    id 'kotlin'
+}
+
+dependencies {
+    api project(':domain')
+
+    dataDependencies.each { add(it.configuration, it.dependency, it.options) }
+    dataTestDependencies.each { add(it.configuration, it.dependency, it.options) }
+}

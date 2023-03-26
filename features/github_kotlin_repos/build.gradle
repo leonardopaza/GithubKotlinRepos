@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$rootProject.projectDir/android-common.gradle"
+
+android {
+    namespace 'com.lp.github_kotlin_repos'
+}
+
+dependencies {
+    implementation project(':base:feature')
+    implementation project(':domain')
+
+    featureGithubKotlinReposDependencies.each { add(it.configuration, it.dependency, it.options) }
+}

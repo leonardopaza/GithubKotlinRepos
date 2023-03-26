@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$rootProject.projectDir/android-common.gradle"
+
+android {
+    namespace 'com.lp.di'
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':data_remote')
+    implementation project(':data_local')
+    implementation project(':domain')
+    implementation project(':features:github_kotlin_repos')
+
+    diDependencies.each { add(it.configuration, it.dependency, it.options) }
+}

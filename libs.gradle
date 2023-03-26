@@ -1,0 +1,22 @@
+ext {
+    appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
+    androidKtxCore = "androidx.core:core-ktx:$androidKtxCoreVersion"
+    material = "com.google.android.material:material:$materialVersion"
+    constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+
+    navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+
+    paging = "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    retrofit2 = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    gsonConvertFactory = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    httpInterceptor = "com.squareup.okhttp3:logging-interceptor:$httpInterceptorVersion"
+    gson = "com.google.code.gson:gson:$gsonVersion"
+
+    koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+
+    glide = "com.github.bumptech.glide:glide:$glideVersion"
+    glideProcessor = "com.github.bumptech.glide:compiler:$glideVersion"
+}

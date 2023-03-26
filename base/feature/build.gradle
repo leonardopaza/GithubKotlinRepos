@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$rootProject.projectDir/android-common.gradle"
+
+android {
+    namespace 'com.lp.feature'
+}
+
+dependencies {
+    baseFeatureDependencies.each { add(it.configuration, it.dependency, it.options) }
+}
