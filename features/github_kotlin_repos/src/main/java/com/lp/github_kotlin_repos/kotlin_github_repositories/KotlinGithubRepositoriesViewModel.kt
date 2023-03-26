@@ -25,7 +25,7 @@ class KotlinGithubRepositoriesViewModel(
         getKotlinRepositories()
     }
 
-    fun getKotlinRepositories() {
+    private fun getKotlinRepositories() {
         val newResult = Pager(
             PagingConfig(
                 pageSize = GithubRepositoriesPagingSource.NETWORK_PAGE_SIZE
