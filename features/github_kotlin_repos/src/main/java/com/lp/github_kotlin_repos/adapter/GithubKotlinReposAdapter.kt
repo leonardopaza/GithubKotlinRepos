@@ -5,19 +5,17 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.lp.domain.model.GithubKotlinReposModel
-import com.lp.feature.utils.ItemClickListener
-import com.lp.feature.utils.ItemLongClickListener
+import com.lp.github_kotlin_repos.R
 import com.lp.github_kotlin_repos.databinding.ItemGithubRepositoryBinding
+import java.text.NumberFormat
+import java.util.*
 
 class GithubKotlinReposAdapter :
     PagingDataAdapter<GithubKotlinReposModel, GithubKotlinReposAdapter.ViewHolder>(
         DiffUtilCallBack()
     ) {
-
-    private var itemClickListener: ItemClickListener? = null
-    private var itemLongClickListener: ItemLongClickListener? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
             ItemGithubRepositoryBinding.inflate(
@@ -38,16 +36,27 @@ class GithubKotlinReposAdapter :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(githubKotlinReposModel: GithubKotlinReposModel) {
+            if (githubKotlinReposModel.authorPictureUrl.isNullOrBlank().not()) {
+                Glide
+                    .with(binding.ivAuthorPicture)
+                    .load(githubKotlinReposModel.authorPictureUrl)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_github_logo)
+                    .into(binding.ivAuthorPicture)
+            } else {
+                Glide.with(binding.ivAuthorPicture).clear(binding.ivAuthorPicture)
+                binding.ivAuthorPicture.setImageResource(R.drawable.ic_github_logo)
+            }
+
             binding.tvAuthorName.text = githubKotlinReposModel.authorName
+            binding.tvRepositoryName.text = githubKotlinReposModel.repositoryName
 
-            binding.root.setOnClickListener {
-                itemClickListener?.onItemClick(it, position)
-            }
+            val numberFormat = NumberFormat.getInstance(Locale("pt", "BR"))
+            if (githubKotlinReposModel.forksQuantity == null) githubKotlinReposModel.forksQuantity = 0
+            if (githubKotlinReposModel.starsQuantity == null) githubKotlinReposModel.starsQuantity = 0
 
-            binding.root.setOnLongClickListener {
-                itemLongClickListener?.onItemLongClick(it, position)
-                return@setOnLongClickListener true
-            }
+            binding.tvForksQuantity.text = numberFormat.format(githubKotlinReposModel.forksQuantity)
+            binding.tvStarsQuantity.text = numberFormat.format(githubKotlinReposModel.starsQuantity)
         }
     }
 
@@ -65,13 +74,5 @@ class GithubKotlinReposAdapter :
         ): Boolean {
             return oldItem == newItem
         }
-    }
-
-    fun itemClickListener(ic: ItemClickListener) {
-        this.itemClickListener = ic
-    }
-
-    fun itemLongClickListener(ic: ItemLongClickListener) {
-        this.itemLongClickListener = ic
     }
 }

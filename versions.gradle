@@ -14,4 +14,6 @@ ext {
     gsonVersion = "2.10.1"
 
     koinVersion = "3.3.0"
+
+    glideVersion = "4.15.1"
 }

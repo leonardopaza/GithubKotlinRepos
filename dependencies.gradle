@@ -44,6 +44,8 @@ ext {
     baseFeatureDependencies = commonDependencies + featureCommonDependencies
 
     featureGithubKotlinReposDependencies = featureCommonDependencies + [
-            [configuration: "implementation", dependency: "$paging"]
+            [configuration: "implementation", dependency: "$paging"],
+            [configuration: "implementation", dependency: "$glide"],
+            [configuration: "annotationProcessor", dependency: "$glideProcessor"]
     ]
 }

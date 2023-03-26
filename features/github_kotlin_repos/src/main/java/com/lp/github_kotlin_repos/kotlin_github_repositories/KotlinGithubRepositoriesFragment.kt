@@ -7,7 +7,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lp.feature.core.BaseFragmentBinding
+import com.lp.github_kotlin_repos.R
 import com.lp.github_kotlin_repos.adapter.GithubKotlinReposAdapter
 import com.lp.github_kotlin_repos.databinding.FragmentKotlinGithubRepositoriesBinding
 import kotlinx.coroutines.flow.collectLatest
@@ -17,6 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class KotlinGithubRepositoriesFragment : BaseFragmentBinding<FragmentKotlinGithubRepositoriesBinding>() {
     private val viewModel: KotlinGithubRepositoriesViewModel by viewModel()
     private val githubKotlinAdapter = GithubKotlinReposAdapter()
+    private var isErrorState = false
 
     override fun onCreateViewBinding(inflater: LayoutInflater):
             FragmentKotlinGithubRepositoriesBinding =
@@ -37,6 +40,27 @@ class KotlinGithubRepositoriesFragment : BaseFragmentBinding<FragmentKotlinGithu
     }
 
     private fun setupAdapter() {
+        setAdapterLoadListener()
+        binding.rvGithubRepositories.adapter = githubKotlinAdapter
+        binding.rvGithubRepositories.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.VERTICAL
+            )
+        )
+
+        binding.rvGithubRepositories.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    if (isErrorState)
+                        githubKotlinAdapter.retry()
+                }
+            }
+        })
+    }
+
+    private fun setAdapterLoadListener() {
         githubKotlinAdapter.addLoadStateListener { loadState ->
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
@@ -53,17 +77,11 @@ class KotlinGithubRepositoriesFragment : BaseFragmentBinding<FragmentKotlinGithu
                 }
 
                 errorState?.let {
-                    Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.error_message), Toast.LENGTH_SHORT).show()
                 }
+
+                isErrorState = errorState != null
             }
         }
-
-        binding.rvGithubRepositories.adapter = githubKotlinAdapter
-        binding.rvGithubRepositories.addItemDecoration(
-            DividerItemDecoration(
-                requireContext(),
-                LinearLayoutManager.VERTICAL
-            )
-        )
     }
 }

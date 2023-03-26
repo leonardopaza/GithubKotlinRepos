@@ -51,5 +51,10 @@ class GithubRepositoriesPagingSource(
         const val NETWORK_MIN_SIZE_TO_NEXT = 25
     }
 
-    override fun getRefreshKey(state: PagingState<Int, GithubKotlinReposModel>): Int? = null
+    override fun getRefreshKey(state: PagingState<Int, GithubKotlinReposModel>): Int? {
+        return state.anchorPosition?.let {
+            state.closestPageToPosition(it)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(it)?.nextKey?.minus(1)
+        }
+    }
 }
