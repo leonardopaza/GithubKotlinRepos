@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     domainDependencies.each { add(it.configuration, it.dependency, it.options) }
+    domainTestDependencies.each { add(it.configuration, it.dependency, it.options) }
 }

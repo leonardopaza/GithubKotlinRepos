@@ -1,6 +1,8 @@
 ext {
     testCommonsDependencies = [
-            [configuration: "testImplementation", dependency: "$junit"]
+            [configuration: "testImplementation", dependency: "$junit"],
+            [configuration: "testImplementation", dependency: "$mockitoKotlin"],
+            [configuration: "testImplementation", dependency: "$mockitoInlineKotlin"]
     ]
 
     androidTestCommonsDependencies = [
@@ -9,5 +11,14 @@ ext {
 
     uiTestCommonsDependencies = [
             [configuration: "androidTestImplementation", dependency: "$espresso"]
+    ]
+
+    domainTestDependencies = testCommonsDependencies
+
+    dataTestDependencies = testCommonsDependencies
+
+    dataRemoteTestDependencies = testCommonsDependencies + [
+            [configuration: "testImplementation", dependency: "$mockk"],
+            [configuration: "implementation", dependency: "$koinAndroid"]
     ]
 }

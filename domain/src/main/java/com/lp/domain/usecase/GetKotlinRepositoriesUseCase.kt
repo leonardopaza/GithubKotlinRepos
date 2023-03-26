@@ -1,11 +1,9 @@
 package com.lp.domain.usecase
 
-import com.lp.domain.model.GithubKotlinReposModel
 import com.lp.domain.repository.KotlinReposRepository
-import kotlinx.coroutines.flow.*
 
 class GetKotlinRepositoriesUseCase(private val repository: KotlinReposRepository) {
-    suspend fun execute(params: Params?) = when (params) {
+    fun run(params: Params? = null) = when (params) {
         null -> throw RuntimeException("Params must not be null")
         else -> {
             repository.getGithubKotlinRepositories(

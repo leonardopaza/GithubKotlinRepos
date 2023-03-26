@@ -23,7 +23,7 @@ class GithubRepositoriesPagingSource(
         return coroutineScope {
             val result = async {
                 try {
-                    getKotlinRepositoriesUseCase.execute(
+                    getKotlinRepositoriesUseCase.run(
                         GetKotlinRepositoriesUseCase.Params(
                             language = language,
                             sort = sort,

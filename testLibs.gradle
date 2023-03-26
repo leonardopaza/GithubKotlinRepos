@@ -2,4 +2,9 @@ ext {
     junit = "junit:junit:$junitVersion"
     androidJunit = "androidx.test.ext:junit:$androidJunitVersion"
     espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
+    mockitoInlineKotlin = "org.mockito:mockito-inline:$mockitoInlineKotlinVersion"
+
+    mockk = "io.mockk:mockk:$mockkVersion"
 }

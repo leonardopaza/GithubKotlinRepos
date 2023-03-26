@@ -13,4 +13,5 @@ dependencies {
     implementation project(':data')
 
     dataRemoteDependencies.each { add(it.configuration, it.dependency, it.options) }
+    dataRemoteTestDependencies.each { add(it.configuration, it.dependency, it.options) }
 }
