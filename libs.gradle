@@ -16,7 +16,13 @@ ext {
     gson = "com.google.code.gson:gson:$gsonVersion"
 
     koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+    koinCore = "io.insert-koin:koin-core:$koinVersion"
 
     glide = "com.github.bumptech.glide:glide:$glideVersion"
     glideProcessor = "com.github.bumptech.glide:compiler:$glideVersion"
+
+    room = "androidx.room:room-runtime:$roomVersion"
+    roomKtx = "androidx.room:room-ktx:$roomVersion"
+    roomAnnotationProcessor = "androidx.room:room-compiler:$roomVersion"
+    roomCommon = "androidx.room:room-common:$roomVersion"
 }

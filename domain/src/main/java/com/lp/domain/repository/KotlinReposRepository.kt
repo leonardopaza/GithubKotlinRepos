@@ -9,4 +9,12 @@ interface KotlinReposRepository {
         sort: String,
         page: Int
     ): Flow<List<GithubKotlinReposModel>>
+
+    suspend fun getLocalGithubKotlinRepositories(
+        page: Int
+    ): List<GithubKotlinReposModel>
+
+    suspend fun saveGithubKotlinRepositories(
+        githubKotlinReposModelList: List<GithubKotlinReposModel>
+    ): Boolean
 }

@@ -5,5 +5,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val featureGithubKotlinReposModule = module {
-    viewModel { KotlinGithubRepositoriesViewModel(get()) }
+    viewModel { KotlinGithubRepositoriesViewModel(get(), get()) }
 }

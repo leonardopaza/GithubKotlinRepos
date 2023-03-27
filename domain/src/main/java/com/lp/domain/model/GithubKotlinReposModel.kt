@@ -5,5 +5,7 @@ data class GithubKotlinReposModel(
     val authorPictureUrl: String? = null,
     val repositoryName: String? = null,
     var starsQuantity: Long? = null,
-    var forksQuantity: Long? = null
+    var forksQuantity: Long? = null,
+    val page: Int? = null,
+    val isLocal: Boolean = false
 )

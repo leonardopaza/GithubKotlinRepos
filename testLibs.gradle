@@ -7,4 +7,11 @@ ext {
     mockitoInlineKotlin = "org.mockito:mockito-inline:$mockitoInlineKotlinVersion"
 
     mockk = "io.mockk:mockk:$mockkVersion"
+
+    androidCoreTest = "androidx.test:core:$androidCoreTestVersion"
+    coreTesting = "androidx.arch.core:core-testing:$coreTestVersion"
+    jUnitKtx = "androidx.test.ext:junit-ktx:$jUnitKtxVersion"
+
+    androidTestRules = "androidx.test:rules:$androidTestRulesVersion"
+    androidTestRunner = "androidx.test:runner:$androidTestVersion"
 }

@@ -1,6 +1,7 @@
 package com.lp.githubkotlinrepos
 
 import android.app.Application
+import com.lp.di.dataLocalModule
 import com.lp.di.dataModule
 import com.lp.di.dataRemoteModule
 import com.lp.di.domainModule
@@ -17,6 +18,7 @@ class MainApplication : Application() {
                 featureGithubKotlinReposModule +
                 domainModule +
                 dataModule +
+                dataLocalModule +
                 dataRemoteModule
             ).androidLogger().androidContext(applicationContext)
         }
