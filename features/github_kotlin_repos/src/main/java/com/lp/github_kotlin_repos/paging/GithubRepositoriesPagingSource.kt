@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.lp.domain.model.GithubKotlinReposModel
 import com.lp.domain.usecase.GetKotlinRepositoriesUseCase
+import com.lp.domain.usecase.SaveKotlinRepositoriesUseCase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.collectLatest
@@ -11,7 +12,8 @@ import kotlinx.coroutines.flow.collectLatest
 class GithubRepositoriesPagingSource(
     private val language: String,
     private val sort: String,
-    private val getKotlinRepositoriesUseCase: GetKotlinRepositoriesUseCase
+    private val getKotlinRepositoriesUseCase: GetKotlinRepositoriesUseCase,
+    private val saveKotlinRepositoriesUseCase: SaveKotlinRepositoriesUseCase
 ) : PagingSource<Int, GithubKotlinReposModel>() {
 
     private val initialPageIndex: Int = 1
@@ -30,6 +32,14 @@ class GithubRepositoriesPagingSource(
                             page = params.key ?: initialPageIndex
                         )
                     ).collectLatest {
+                        if (it.firstOrNull()?.isLocal != true) {
+                            saveKotlinRepositoriesUseCase.run(
+                                SaveKotlinRepositoriesUseCase.Params(
+                                    it
+                                )
+                            )
+                        }
+
                         response = LoadResult.Page(
                             data = it,
                             prevKey = if (position == initialPageIndex) null else position - 1,

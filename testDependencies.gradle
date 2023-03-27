@@ -2,11 +2,15 @@ ext {
     testCommonsDependencies = [
             [configuration: "testImplementation", dependency: "$junit"],
             [configuration: "testImplementation", dependency: "$mockitoKotlin"],
-            [configuration: "testImplementation", dependency: "$mockitoInlineKotlin"]
+            [configuration: "testImplementation", dependency: "$mockitoInlineKotlin"],
+            [configuration: "testImplementation", dependency: "$koinCore"]
     ]
 
     androidTestCommonsDependencies = [
-            [configuration: "androidTestImplementation", dependency: "$androidJunit"]
+            [configuration: "androidTestImplementation", dependency: "$androidJunit"],
+            [configuration: "androidTestImplementation", dependency: "$androidTestRules"],
+            [configuration: "androidTestImplementation", dependency: "$androidTestRunner"],
+            [configuration: "androidTestImplementation", dependency: "$coreTesting"]
     ]
 
     uiTestCommonsDependencies = [
@@ -20,5 +24,12 @@ ext {
     dataRemoteTestDependencies = testCommonsDependencies + [
             [configuration: "testImplementation", dependency: "$mockk"],
             [configuration: "implementation", dependency: "$koinAndroid"]
+    ]
+
+    dataLocalTestDependencies = testCommonsDependencies + androidTestCommonsDependencies + [
+            [configuration: "implementation", dependency: "$androidCoreTest",
+             options: { exclude group: 'androidx.test', module: 'core'}
+            ],
+            [configuration: "testImplementation", dependency: "$jUnitKtx"]
     ]
 }

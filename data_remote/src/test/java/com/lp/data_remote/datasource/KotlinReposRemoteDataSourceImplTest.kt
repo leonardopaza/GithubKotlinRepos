@@ -42,7 +42,7 @@ class KotlinReposRemoteDataSourceImplTest {
     fun getGithubKotlinRepositoriesMustReturnGithubKotlinReposResponseWhenCall() = runBlocking {
         stubGetGithubKotlinRepositoriesSuccess()
 
-        val data = GithubKotlinReposMapper.toDomain(DUMMY_GITHUB_KOTLIN_REPOS_RESPONSE)
+        val data = GithubKotlinReposMapper.toDomain(DUMMY_GITHUB_KOTLIN_REPOS_RESPONSE, PAGE_PARAM)
         val result = dataSource.getGithubKotlinRepositories(
             LANGUAGE_PARAM,
             SORT_PARAM,

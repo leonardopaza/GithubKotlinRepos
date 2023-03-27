@@ -1,6 +1,7 @@
 package com.lp.domain.mocks
 
 import com.lp.domain.usecase.GetKotlinRepositoriesUseCase
+import com.lp.domain.usecase.SaveKotlinRepositoriesUseCase
 
 object GetKotlinRepositoriesUseCaseFactory {
     private const val LANGUAGE_PARAM = "language:kotlin"
@@ -11,5 +12,9 @@ object GetKotlinRepositoriesUseCaseFactory {
         language = LANGUAGE_PARAM,
         sort = SORT_PARAM,
         page = PAGE_PARAM
+    )
+
+    val SAVE_PARAMS = SaveKotlinRepositoriesUseCase.Params(
+        githubKotlinReposModelList = listOf()
     )
 }

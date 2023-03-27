@@ -1,13 +1,10 @@
 package com.lp.domain.usecase
 
-import com.lp.domain.mocks.GetKotlinRepositoriesUseCaseFactory.PARAMS
+import com.lp.domain.mocks.GetKotlinRepositoriesUseCaseFactory.SAVE_PARAMS
 import com.lp.domain.mocks.TestContextProvider
-import com.lp.domain.mocks.testFlow
 import com.lp.domain.mocks.testModule
-import com.lp.domain.model.GithubKotlinReposModel
 import com.lp.domain.repository.KotlinReposRepository
 import junit.framework.TestCase.assertEquals
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -19,19 +16,16 @@ import org.mockito.MockitoAnnotations
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
 
-class GetKotlinRepositoriesUseCaseTest {
-    @Mock
-    private lateinit var response: List<GithubKotlinReposModel>
-
+class SaveKotlinRepositoriesUseCaseTest {
     @Mock
     private lateinit var repository: KotlinReposRepository
-    private lateinit var subject: GetKotlinRepositoriesUseCase
+    private lateinit var subject: SaveKotlinRepositoriesUseCase
 
     @Before
     fun before() {
         MockitoAnnotations.openMocks(this)
         startKoin { modules(testModule) }
-        subject = GetKotlinRepositoriesUseCase(
+        subject = SaveKotlinRepositoriesUseCase(
             repository
         )
     }
@@ -51,33 +45,26 @@ class GetKotlinRepositoriesUseCaseTest {
     }
 
     @Test
-    fun `WHEN succeed MUST return list of GithubKotlinReposModel values`() {
-        stubLocalOnSuccess()
+    fun `WHEN succeed MUST return Boolean value`() {
         stubOnSuccess()
         TestContextProvider().io.run {
             runBlocking(this) {
                 subject.run(
-                    PARAMS
-                ).testFlow {
-                    assertEquals(response, this)
+                    SAVE_PARAMS
+                ).run {
+                    assertEquals(true, this)
                 }
             }
         }
     }
 
-    private fun stubLocalOnSuccess() {
+    private fun stubOnSuccess() {
         TestContextProvider().io.run {
             runBlocking(this) {
                 whenever(
-                    repository.getLocalGithubKotlinRepositories(any())
-                ).thenReturn(response)
+                    repository.saveGithubKotlinRepositories(any())
+                ).thenReturn(true)
             }
         }
-    }
-
-    private fun stubOnSuccess() {
-        whenever(
-            repository.getGithubKotlinRepositories(any(), any(), any())
-        ).thenReturn(flowOf(response))
     }
 }

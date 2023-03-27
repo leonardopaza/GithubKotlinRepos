@@ -20,7 +20,8 @@ ext {
 
     dataDependencies = [
             [configuration: "implementation", dependency: "$gson"],
-            [configuration: "implementation", dependency: "$coroutine"]
+            [configuration: "implementation", dependency: "$coroutine"],
+            [configuration: "implementation", dependency: "$roomCommon"]
     ]
 
     dataRemoteDependencies = [
@@ -29,6 +30,12 @@ ext {
             [configuration: "implementation", dependency: "$httpInterceptor"],
             [configuration: "implementation", dependency: "$gson"],
             [configuration: "implementation", dependency: "$coroutine"]
+    ]
+
+    dataLocalDependencies = [
+            [configuration: "implementation", dependency: "$room"],
+            [configuration: "implementation", dependency: "$roomKtx"],
+            [configuration: "kapt", dependency: "$roomAnnotationProcessor"]
     ]
 
     domainDependencies = [
